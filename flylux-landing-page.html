@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlyLux Holiday Experts | Premium Travel Packages</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #000;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .logo span {
+            color: #f5f5f5;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #b3b3b3;
+        }
+        
+        .cta-button {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #b3b3b3;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/800') center/cover no-repeat;
+            margin-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #e0e0e0;
+        }
+        
+        /* Featured Packages */
+        .packages {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #b3b3b3;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .package-card {
+            background-color: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.1);
+        }
+        
+        .package-img {
+            height: 200px;
+            background-color: #333;
+        }
+        
+        .package-content {
+            padding: 25px;
+        }
+        
+        .package-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .package-content p {
+            color: #b3b3b3;
+            margin-bottom: 20px;
+        }
+        
+        .package-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        /* Why Choose Us */
+        .features {
+            padding: 100px 0;
+            background-color: #111;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .feature-item h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-item p {
+            color: #b3b3b3;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: #000;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: #111;
+            padding: 30px;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .quote {
+            font-size: 24px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            opacity: 0.2;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #333;
+            margin-right: 15px;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #b3b3b3;
+            font-size: 14px;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 0;
+            background-color: #111;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter p {
+            color: #b3b3b3;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 16px;
+        }
+        
+        .newsletter-form button {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 0 30px 30px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #b3b3b3;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 2px;
+            background-color: #fff;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #b3b3b3;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #fff;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #333;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #222;
+        }
+        
+        .footer-bottom p {
+            color: #b3b3b3;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">FLY<span>LUX</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#packages">Packages</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="cta-button">Book Now</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Elevate Your Travel Experience</h1>
+                <p>Discover carefully crafted luxury travel packages for international trips, family vacations, couples retreats, and customized adventures.</p>
+                <button class="cta-button">Explore Packages</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Packages -->
+    <section class="packages" id="packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Packages</h2>
+                <p>Explore our most popular travel experiences curated by experts for unforgettable journeys.</p>
+            </div>
+            <div class="package-grid">
+                <div class="package-card">
+                    <div class="package-img"></div>
+                    <div class="package-content">
+                        <h3>International Adventures</h3>
+                        <p>Explore exotic destinations around the globe with our premium international travel packages.</p>
+                        <div class="package-footer">
+                            <span class="price">From $1,499</span>
+                            <button class="cta-button">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <div class="package-img"></div>
+                    <div class="package-content">
+                        <h3>Family Getaways</h3>
+                        <p>Create lasting memories with family-friendly vacation packages designed for all ages.</p>
+                        <div class="package-footer">
+                            <span class="price">From $999</span>
+                            <button class="cta-button">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <div class="package-img"></div>
+                    <div class="package-content">
+                        <h3>Romantic Escapes</h3>
+                        <p>Experience luxury couple packages designed for romance, relaxation, and reconnection.</p>
+                        <div class="package-footer">
+                            <span class="price">From $1,299</span>
+                            <button class="cta-button">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <div class="package-img"></div>
+                    <div class="package-content">
+                        <h3>College Trip Specials</h3>
+                        <p>Unforgettable group adventures for students seeking exploration and excitement.</p>
+                        <div class="package-footer">
+                            <span class="price">From $799</span>
+                            <button class="cta-button">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose FlyLux</h2>
+                <p>We deliver exceptional travel experiences with attention to detail and personalized service.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3>All-Inclusive Packages</h3>
+                    <p>From flights and accommodations to tours and transfers, we handle every detail of your journey.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3>Personalized Experience</h3>
+                    <p>Customize your travel experience to match your preferences, interests, and budget.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3>Expert Travel Guides</h3>
+                    <p>Our knowledgeable guides ensure you experience the best each destination has to offer.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3>24/7 Customer Support</h3>
+                    <p>Travel with peace of mind knowing our support team is available around the clock.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Travelers Say</h2>
+                <p>Read about experiences from travelers who chose FlyLux for their unforgettable journeys.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="quote">"</div>
+                    <p class="testimonial-text">Our family vacation to Bali was absolutely perfect. FlyLux took care of every detail, allowing us to focus on creating memories together.</p>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Family Package • Bali</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">"</div>
+                    <p class="testimonial-text">The romantic getaway to Santorini exceeded all expectations. The private sunset cruise arranged by FlyLux was the highlight of our trip.</p>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div class="author-info">
+                            <h4>Michael & Emma</h4>
+                            <p>Couple Package • Greece</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">"</div>
+                    <p class="testimonial-text">Our university trip to Japan was perfectly organized. From cultural experiences to adventure activities, FlyLux created the perfect balance.</p>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div class="author-info">
+                            <h4>Alex Turner</h4>
+                            <p>College Trip • Japan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Get Exclusive Travel Offers</h2>
+            <p>Subscribe to our newsletter and be the first to receive special deals and travel inspiration.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FlyLux</h3>
+                    <p style="color: #b3b3b3; margin-bottom: 20px;">Elevating travel experiences with expertly crafted packages for every type of traveler.</p>
+                    <div class="social-links">
+                        <a href="#">F</a>
+                        <a href="#">T</a>
+                        <a href="#">I</a>
+                        <a href="#">P</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Packages</h3>
+                    <ul>
+                        <li><a href="#">International Trips</a></li>
+                        <li><a href="#">Family Packages</a></li>
+                        <li><a href="#">Couple Packages</a></li>
+                        <li><a href="#">Custom Packages</a></li>
+                        <li><a href="#">College Trips</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Testimonials</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cancellation Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FlyLux Holiday Experts. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
